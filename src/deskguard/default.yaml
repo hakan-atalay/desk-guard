@@ -1,0 +1,64 @@
+model:
+  weights: yoloe-26s-seg.pt
+  confidence: 0.25
+  actor_confidence: 0.4
+  image_size: 640
+  device: null
+  duplicate_iou: 0.6
+  max_box_ratio: 0.25
+  actor_overlap_iou: 0.5
+
+monitor:
+  settle_seconds: 2.0
+  abandon_seconds: 10.0
+  removal_seconds: 3.0
+  forget_seconds: 2.0
+  removed_display_seconds: 5.0
+  owner_margin: 0.2
+  move_ratio: 0.03
+  match_iou: 0.3
+  arm_delay_seconds: 5.0
+  intrusion_reset_seconds: 3.0
+
+alarms:
+  output_dir: runs/alarms
+  cooldown_seconds: 5.0
+  banner_seconds: 3.0
+  beep: true
+
+privacy:
+  blur_faces: true
+  head_ratio: 0.4
+  kernel_size: 51
+
+person_prompts: [person]
+hand_prompts: [hand, human hand]
+
+targets:
+  - label: phone
+    name: Telefon
+    prompts: [smartphone, mobile phone, back of a smartphone, phone lying face down]
+  - label: keys
+    name: Anahtar
+    prompts: [keys, bunch of keys, car key]
+  - label: wallet
+    name: Cüzdan
+    prompts: [wallet, leather wallet, card holder, slim black card wallet]
+  - label: glasses
+    name: Gözlük
+    prompts: [eyeglasses, sunglasses]
+  - label: glasses_case
+    name: Gözlük kabı
+    prompts: [glasses case, eyeglass case]
+  - label: drink
+    name: İçecek
+    prompts: [tea glass, coffee cup, bottle]
+    valuable: false
+  - label: menu
+    name: Menü
+    prompts: [menu, restaurant menu]
+    valuable: false
+  - label: ashtray
+    name: Kül tablası
+    prompts: [ashtray]
+    valuable: false

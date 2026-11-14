@@ -1,0 +1,34 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "deskguard"
+version = "0.2.0"
+description = "Real-time abandoned and removed item detection for desks with YOLOE-26, YOLO26 and ByteTrack"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "ultralytics>=8.4.0",
+    "opencv-python>=4.9",
+    "numpy>=1.24",
+    "pyyaml>=6.0",
+    "pillow>=10.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+data = ["roboflow>=1.1"]
+
+[project.scripts]
+deskguard = "deskguard.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/deskguard"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
